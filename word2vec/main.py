@@ -44,4 +44,7 @@ if __name__ == '__main__':
     parser.add_argument('-corpus_dest',type=str,help='Path to save the processed corpus')
     parser.add_argument('-model_path',type=str,help='Path to the model')
     args = parser.parse_args()
+    print("================================")
+    print(args)
+    print("================================")
     main(args)
