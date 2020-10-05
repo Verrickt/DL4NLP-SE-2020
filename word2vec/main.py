@@ -1,5 +1,5 @@
+#Uncomment the following line if running on huawei cloud
 #import moxing as mox
-#Not running on huawei cloud
 import os
 import preprocessor
 import argparse
@@ -8,6 +8,7 @@ from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 
 def training(corpus,target_path):
+    # Model exists?
     if(os.path.exists(target_path+'/model')):
         return Word2Vec.load(target_path+'/model')
     model = Word2Vec(LineSentence(corpus), size=400, window=5, min_count=5,
@@ -17,7 +18,7 @@ def training(corpus,target_path):
     return model
 
 def eval(model):
-    print("Evaluating model. Input a word to see the most similar ones. Press Q to exit")
+    print("Evaluating model. Input a word to see the top3 most similar ones. Press Q to exit")
     while True:
         try:
             s = input()  

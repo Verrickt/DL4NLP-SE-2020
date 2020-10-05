@@ -15,7 +15,7 @@ class preprocessor():
         self.regex =  re.compile('^[\u4e00-\u9fa5]+$')
         self.logging_interval = 10000
     def __bz2_to_sequence(self,input):
-        # This function converts the compressed wikipedia corpus to a generator of articles
+        # This function converts the compressed wikipedia corpus to a sequence of articles
         logger = logging.getLogger("bz2_to_sequence")
         logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s')
         logging.root.setLevel(level=logging.INFO)
@@ -30,6 +30,7 @@ class preprocessor():
                 logger.info("Extracted %d articles" % (i,))
         logger.info('Extraction finished')
     def __tokenize(self,str):
+        # return a sequence, so filter can be applied
         return jieba.cut(str)
     def __cht_to_chs(self,input):
          chs = zhconv.convert(input,locale='zh-cn')
