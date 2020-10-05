@@ -24,6 +24,9 @@ class preprocessor():
         i = 0
         separator = " "
         for text in wiki.get_texts():
+            # yield changes this function a generator function.
+            # The generator function can be iterated like a list,
+            # but the contents are lazy evaluated.
             yield separator.join(text)+"\n"
             i = i+1
             if i%self.logging_interval==0:
