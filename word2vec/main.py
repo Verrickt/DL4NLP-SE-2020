@@ -44,8 +44,13 @@ if __name__ == '__main__':
     parser.add_argument('-src',type=str,help='Path to the source file')
     parser.add_argument('-corpus_dest',type=str,help='Path to save the processed corpus')
     parser.add_argument('-model_path',type=str,help='Path to the model')
-    args = parser.parse_args()
-    print("================================")
-    print(args)
-    print("================================")
-    main(args)
+    try:
+        args = parser.parse_args()
+        print("================================")
+        print(args)
+        print("================================")
+        main(args)
+    except:
+        parser.print_help()
+        sys.exit(0)
+
