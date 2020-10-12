@@ -152,3 +152,9 @@ word2vec/.idea/vcs.xml
 word2vec/.idea/modules.xml
 word2vec/.idea/misc.xml
 word2vec/.idea/inspectionProfiles/profiles_settings.xml
+doc2label/.vscode/settings.json
+doc2label/data/aclImdb_v1.tar.gz
+doc2label/data/cnews.test.txt
+doc2label/data/cnews.train.txt
+doc2label/data/cnews.val.txt
+doc2label/data/cnews.vocab.txt
