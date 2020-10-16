@@ -9,6 +9,7 @@ from sklearn.metrics import confusion_matrix
 import seaborn as sn
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 def train(train_iter,valid_iter,model,args):
     if args.cuda:
@@ -75,7 +76,8 @@ def eval(data_iter, model, args):
     return accuracy
 
 def plot_confusion_matrix(matrix,labels):
-    df_cm = pd.DataFrame(matrix,labels,labels)
+    normalized = matrix.astype('float') / matrix.sum(axis=1)[:, np.newaxis]
+    df_cm = pd.DataFrame(normalized,labels,labels)
     sn.set(font_scale=1.4)
     sn.heatmap(df_cm,annot=True,annot_kws={'size':16})
     plt.show()
