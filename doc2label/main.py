@@ -65,20 +65,13 @@ if __name__ == '__main__':
     parser.add_argument('-seed',type=int,default=0,help='seed for RNG')
     parser.add_argument('-max_vocabulary_size',type=int,default=10000,help='The maximum size of vocabulary')
     parser.add_argument('-dataset',type=str,default='imdb',help='The target dataset')
-    #try:
-    #    args = parser.parse_args()
-    #    print("====================")
-    #    print(args)
-    #    print("====================")
-    #    main(args)
-    #except:
-    #    parser.print_help()
-    #    sys.exit(0)
+    try:
+        args = parser.parse_args()
+        print("====================")
+        print(args)
+        print("====================")
+        main(args)
+    except:
+        parser.print_help()
+        sys.exit(0)
 
-    args = parser.parse_args()
-    print("====================")
-    print(args)
-    print("====================")
-    main(args)
-    parser.print_help()
-    sys.exit(0)
