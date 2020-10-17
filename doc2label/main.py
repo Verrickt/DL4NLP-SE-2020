@@ -12,8 +12,11 @@ def main(args):
     torch.manual_seed(args.seed)
     TEXT = data.Field(lower=True)
     LABEL = data.LabelField()
-    train_iter,valid_iter,test_iter = datasets.imdb(TEXT,LABEL,args=args)
-
+    if args.dataset is 'imdb':
+        train_iter,valid_iter,test_iter = datasets.imdb(TEXT,LABEL,args=args)
+        model = tcnn.Text_CNN(args)
+    else:
+        pass
     args.vocabulary_size = len(TEXT.vocab)
     args.output_dim = len(LABEL.vocab)
     args.cuda = (not args.no_cuda) and torch.cuda.is_available(); del args.no_cuda
@@ -21,7 +24,6 @@ def main(args):
     print("\nParameters:")
     for attr, value in sorted(args.__dict__.items()):
         print("\t{}={}".format(attr.upper(), value))
-    model = tcnn.Text_CNN(args)
     if args.cuda:
         model.cuda()
     if args.snapshot is not None:
@@ -41,7 +43,6 @@ if __name__ == '__main__':
     parser.add_argument('-batch-size', type=int, default=64, help='batch size for training [default: 64]')
     parser.add_argument('-log-interval',  type=int, default=1,   help='how many steps to wait before logging training status [default: 1]')
     parser.add_argument('-test-interval', type=int, default=100, help='how many steps to wait before testing [default: 100]')
-    parser.add_argument('-save-interval', type=int, default=500, help='how many steps to wait before saving [default:500]')
     parser.add_argument('-save-dir', type=str, default='./model', help='where to save the snapshot')
     parser.add_argument('-save-best', type=bool, default=True, help='whether to save when get best performance')
     # data 
@@ -62,6 +63,7 @@ if __name__ == '__main__':
     parser.add_argument('-test', action='store_true', default=False, help='train or test')
     parser.add_argument('-seed',type=int,default=0,help='seed for RNG')
     parser.add_argument('-max_vocabulary_size',type=int,default=10000,help='The maximum size of vocabulary')
+    parser.add_argument('-dataset',type=str,default='imdb',help='The target dataset')
     #try:
     #    args = parser.parse_args()
     #    print("====================")
