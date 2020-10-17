@@ -33,6 +33,7 @@ The word embeddings used are based on [Glove][1]. Place `glove.6B.300d.txt` to `
 1. Torchtext
 1. Sklearn
 1. Seaborn
+1. Jieba
 
 ### Reference
 
