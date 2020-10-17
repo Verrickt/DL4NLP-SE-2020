@@ -152,10 +152,10 @@ word2vec/.idea/vcs.xml
 word2vec/.idea/modules.xml
 word2vec/.idea/misc.xml
 word2vec/.idea/inspectionProfiles/profiles_settings.xml
-doc2label/.vscode
-doc2label/data
-doc2label/.data
-doc2label/model
-doc2label/vector_cache
-doc2label/.vector_cache
-doc2label/.vs
+doc2label-ENG/.vscode
+doc2label-ENG/data
+doc2label-ENG/.data
+doc2label-ENG/model
+doc2label-ENG/vector_cache
+doc2label-ENG/.vector_cache
+doc2label-ENG/.vs
