@@ -14,11 +14,12 @@ def main(args):
     LABEL = data.LabelField()
     if args.dataset is 'imdb':
         train_iter,valid_iter,test_iter = datasets.imdb(TEXT,LABEL,args=args)
+        args.vocabulary_size = len(TEXT.vocab)
+        args.output_dim = len(LABEL.vocab)
         model = tcnn.Text_CNN(args)
     else:
         pass
-    args.vocabulary_size = len(TEXT.vocab)
-    args.output_dim = len(LABEL.vocab)
+
     args.cuda = (not args.no_cuda) and torch.cuda.is_available(); del args.no_cuda
 
     print("\nParameters:")
