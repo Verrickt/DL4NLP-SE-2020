@@ -12,16 +12,11 @@ def main(args):
     torch.manual_seed(args.seed)
     TEXT = data.Field(lower=True)
     LABEL = data.LabelField()
-    if args.dataset is 'imdb':
-        train_iter,valid_iter,test_iter = datasets.imdb(TEXT,LABEL,args=args)
-        args.vocabulary_size = len(TEXT.vocab)
-        args.output_dim = len(LABEL.vocab)
-        model = tcnn.Text_CNN(args)
-    else:
-        pass
-
+    train_iter,valid_iter,test_iter = datasets.imdb(TEXT,LABEL,args=args)
+    args.vocabulary_size = len(TEXT.vocab)
+    args.output_dim = len(LABEL.vocab)
+    model = tcnn.Text_CNN(args)
     args.cuda = (not args.no_cuda) and torch.cuda.is_available(); del args.no_cuda
-
     print("\nParameters:")
     for attr, value in sorted(args.__dict__.items()):
         print("\t{}={}".format(attr.upper(), value))
@@ -64,7 +59,6 @@ if __name__ == '__main__':
     parser.add_argument('-test', action='store_true', default=False, help='train or test')
     parser.add_argument('-seed',type=int,default=0,help='seed for RNG')
     parser.add_argument('-max_vocabulary_size',type=int,default=10000,help='The maximum size of vocabulary')
-    parser.add_argument('-dataset',type=str,default='imdb',help='The target dataset')
     try:
         args = parser.parse_args()
         print("====================")
