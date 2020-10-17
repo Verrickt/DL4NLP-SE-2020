@@ -78,8 +78,8 @@ def eval(data_iter, model, args):
 def plot_confusion_matrix(matrix,labels):
     normalized = matrix.astype('float') / matrix.sum(axis=1)[:, np.newaxis]
     df_cm = pd.DataFrame(normalized,labels,labels)
-    sn.set(font_scale=1.4)
-    sn.heatmap(df_cm,annot=True,annot_kws={'size':16})
+    sn.set(font_scale=1)
+    sn.heatmap(df_cm,annot=True,annot_kws={'size':8})
     plt.show()
 
 def evaluate_model(model,data_iter,args):
