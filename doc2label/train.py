@@ -14,7 +14,7 @@ import numpy as np
 def train(train_iter,valid_iter,model,args):
     if args.cuda:
         model.cuda()
-    optimizer = torch.optim.Adam(model.parameters(),lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(),lr=args.lr)
     steps = 0
     best_acc = 0
     last_step = 0
