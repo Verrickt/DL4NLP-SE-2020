@@ -1,0 +1,1 @@
+To evaluate the MeanAcc, simply run `python ./evaluate.py`
